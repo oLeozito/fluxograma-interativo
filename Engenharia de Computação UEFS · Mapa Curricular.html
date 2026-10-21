@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Engenharia de Computação UEFS · Mapa Curricular</title>
+<style>
+:root{--bg:#F5F4F0;--hd:#FFFFFF;--card:#FFFFFF;--ink:#23272F;--mut:#5D6572;--line:#9AA1AB;--bd:#DDD9D0;--band:#ECEAE4;--acc:#111827;--sel:#64748B;--rule:#F3E2DB;--rulet:#7A3B2E;--ok:#4E8070;--av:#059669;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16181C;--hd:#1D2025;--card:#23272D;--ink:#E6E8EB;--mut:#A3AAB5;--line:#6B7482;--bd:#2F343C;--band:#1C1F24;--acc:#F3F4F6;--sel:#94A3B8;--rule:#3A2A27;--rulet:#EBB8A9;--ok:#78B5A0;--av:#34D399}}
+:root[data-theme="dark"]{--bg:#16181C;--hd:#1D2025;--card:#23272D;--ink:#E6E8EB;--mut:#A3AAB5;--line:#6B7482;--bd:#2F343C;--band:#1C1F24;--acc:#F3F4F6;--sel:#94A3B8;--rule:#3A2A27;--rulet:#EBB8A9;--ok:#78B5A0;--av:#34D399}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}html,body{height:100%}
+body{margin:0;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:8px 16px;background:var(--hd);border-bottom:1px solid var(--bd)}
+h1{font-size:19px;margin:0;font-weight:700}header p{margin:2px 0 0;color:var(--mut);font-size:12px;letter-spacing:.03em}
+.sems{display:flex;gap:3px;align-items:center;margin:0 auto}.sems .sd{display:flex;align-items:center;gap:5px;padding:3px 8px 3px 5px;border-radius:16px;border:1px solid transparent;background:none;font-size:12px;color:var(--mut)}.sd i{width:16px;height:16px;border-radius:50%;display:block}.sems .sd:hover{border-color:var(--line)}.sems .sd.on{border-color:var(--ink);color:var(--ink);background:var(--card)}
+.bar{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut)}.pb{width:90px;height:6px;border-radius:3px;background:var(--bd);overflow:hidden}.pb i{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}
+button{font:inherit;font-weight:600;font-size:12px;color:var(--ink);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px 11px;cursor:pointer}button:hover{border-color:var(--line)}
+.sw{display:flex;align-items:center;gap:8px;padding:6px 10px}#ic{display:flex}.tr{width:28px;height:15px;border-radius:8px;background:var(--line);position:relative}.tr::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--card);transition:left .15s}[aria-checked="true"] .tr::after{left:15px}
+main{flex:1;min-height:0;position:relative;overflow:auto}svg#map{display:block;width:100%;height:100%;min-width:1100px}
+#lg{position:absolute;right:14px;top:10px;width:400px;max-height:calc(100% - 20px);overflow:auto;background:var(--hd);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;box-shadow:0 8px 30px #0003;font-size:12px}
+#lg[hidden]{display:none}#lg h2{font-size:12px;margin:0 0 8px;letter-spacing:.06em}#lg p{margin:5px 0;color:var(--mut)}#lg b{color:var(--ink)}
+.hg{display:grid;grid-template-columns:1fr;gap:3px 16px;margin:6px 0 10px}.hg div{display:flex;justify-content:space-between;border-bottom:1px solid var(--bd);padding:2px 0}
+.zt{font-size:11px;font-weight:700;letter-spacing:.07em;fill:var(--mut)}.sub{font-size:9px;fill:var(--mut)}.bl{font-size:9px;font-weight:700;letter-spacing:.08em;fill:var(--mut);text-anchor:end}
+.band{fill:var(--band)}.cl{fill:none;stroke:var(--mut);stroke-width:1.2;stroke-dasharray:4 3}.clt{font-size:7px;font-weight:700;letter-spacing:.06em;fill:var(--mut)}
+.card,.slotg{cursor:pointer;transition:opacity .15s}.cr{fill:var(--card);stroke:var(--line);stroke-width:1.2}
+.card:hover .cr,.card:focus .cr{stroke:var(--acc);stroke-width:2}.card:focus{outline:none}
+.meta{font-size:9.5px;fill:var(--mut);text-anchor:middle}.code{font-size:14.5px;font-weight:800;fill:var(--ink)}.nm{font-size:8.5px;font-weight:600;fill:var(--mut)}
+.bd{fill:var(--card);stroke:var(--line);stroke-width:1.3}.ct{font-size:10px;font-weight:800;fill:var(--ink);text-anchor:middle}.card.zero .bd{stroke-dasharray:2 2;stroke:var(--ok)}.card.zero .ct{fill:var(--ok)}
+.ck{font-size:13px;font-weight:800;fill:var(--ok);opacity:0}.done .ck{opacity:1}.done{opacity:.4}.done .code{text-decoration:line-through}
+.edge{fill:none;stroke:var(--line);stroke-width:1.6;opacity:.85;marker-end:url(#ar)}.edge.hot{stroke:var(--acc);stroke-width:2.6;opacity:1}.edge.dim{opacity:.06}
+.card.dim{opacity:.16}.card.hot .cr{stroke:var(--acc);stroke-width:2.6}.card.rel .cr{stroke:var(--sel);stroke-width:1.8}.cl.dim,.clt.dim{opacity:.15}.card.hot.done,.card.rel.done{opacity:1}
+.slotg .cr{stroke-dasharray:4 3}.rn{fill:var(--rule)}.rt{font-size:8.5px;font-weight:600;fill:var(--rulet)}.sl{font-size:10px;font-weight:700;fill:var(--ink)}
+#pk{position:fixed;left:50%;top:84px;transform:translateX(-50%);width:440px;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--hd);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;box-shadow:0 12px 40px #0004;z-index:5;font-size:12px}#pk[hidden]{display:none}#pk h2{font-size:12px;margin:0;letter-spacing:.05em}
+#pq,.pa input{width:100%;box-sizing:border-box;font:inherit;padding:7px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--ink)}#pq{margin-top:10px}
+#pl{max-height:260px;overflow:auto;margin:8px 0;display:flex;flex-direction:column;gap:4px}.pi{display:flex;gap:10px;align-items:baseline;text-align:left;width:100%;padding:7px 10px;font-weight:400}.pi b{min-width:58px}.pi span{flex:1;color:var(--mut)}.pi em{font-style:normal;color:var(--mut);font-size:10px}.pi.sel{border-color:var(--acc)}.pi:disabled{opacity:.45;cursor:default}
+.pe,.pn{color:var(--mut);margin:8px 0;font-size:11px}.pa{display:grid;grid-template-columns:90px 1fr auto;gap:6px;margin-top:8px}.slotg.done{opacity:.65}.avr{fill:none;stroke:var(--av);stroke-width:2.6;opacity:0;pointer-events:none}.av .avr{opacity:1}#av[aria-pressed="true"]{border-color:var(--av);color:var(--av);box-shadow:inset 0 0 0 1px var(--av)}
+</style>
+</head>
+<body>
+<header>
+<div><h1>Árvore de Dependências</h1><p>Engenharia de Computação - Resolução Consepe 073/2023</p></div>
+<div class="sems" id="sems" aria-label="Cores dos semestres"></div>
+<div class="bar"><span id="prog"></span><span class="pb"><i id="pbf"></i></span><button id="av" aria-pressed="false" title="Destacar as obrigatórias que você já pode cursar">Disponíveis</button><button id="rs">Limpar</button><button id="lb" aria-expanded="false">Legenda</button><button id="th" class="sw" role="switch" aria-checked="false" aria-label="Alternar modo claro e escuro"><span id="ic"></span><span class="tr"></span></button></div>
+</header>
+<main>
+<svg id="map" viewBox="0 0 1930 870" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa curricular de Engenharia de Computação da UEFS">
+<defs><marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7z" fill="context-stroke"/></marker></defs>
+<g id="bg"></g><g id="ed"></g><g id="cl"></g><g id="cd"></g>
+</svg>
+<aside id="lg" hidden>
+<h2>LEGENDA</h2>
+<p><b>Seta sólida:</b> pré-requisito direto. <b>Caixa tracejada (co-requisito):</b> cursar juntas no mesmo semestre.</p>
+<p><b>Ponto colorido:</b> semestre sugerido. <b>Badge:</b> obrigatórias que a disciplina tranca, direta ou indiretamente; tracejado verde (0) = livre.</p>
+<p><b>Passe o mouse</b> para destacar a cadeia. <b>Bolinhas do topo:</b> clique para destacar só aquele semestre. <b>Clique no card</b> para marcar como cumprida (fica apagada e é salva neste navegador).</p>
+<h2 style="margin-top:12px">SIGLAS E RESUMO DA MATRIZ · 3.600h</h2>
+<div class="hg" id="hg"></div>
+
+<p><b>Botão Disponíveis:</b> contorno verde nas obrigatórias que você já pode cursar, considerando pré-requisitos, carga horária exigida e co-requisitos (se uma do grupo está bloqueada, o grupo todo fica sem destaque).</p><p><b>CH</b> = carga horária; "(15h EXT)" = horas de extensão dentro dela. <b>Vagas de optativa (OP, OH, OC):</b> clique para escolher a disciplina e marcá-la como cumprida.</p><p>Mapa de apoio. Confirme na resolução oficial antes de decidir matrícula.</p>
+</aside>
+<div id="pk" hidden role="dialog" aria-label="Escolher disciplina optativa"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="pt"></h2><button id="px" aria-label="Fechar">×</button></div><input id="pq" type="search" placeholder="Pesquisar por código ou nome" autocomplete="off"><div id="pl"></div><p class="pn">Lista parcial: só tem o que já conheço da resolução. Adicione abaixo as optativas que faltam; elas ficam salvas neste navegador.</p><div class="pa"><input id="ac" placeholder="Código" autocomplete="off"><input id="an" placeholder="Nome da disciplina" autocomplete="off"><button id="ad">Adicionar</button></div><div style="margin-top:10px"><button id="pc">Limpar vaga</button></div></div>
+</main>
+<script>
+const C=['#EF4444','#F97316','#EAB308','#84CC16','#16A34A','#06B6D4','#3B82F6','#1D4ED8','#7C3AED','#B8860B'];
+const W=150,H=56,X0=20,Y0=190,PX=174,PY=66,NS='http://www.w3.org/2000/svg';
+const D=`EXA543|INTRODUÇÃO AO CÁLCULO|1|60|DO|15|0|0
+EXA704|CÁLCULO DIF. E INTEGRAL I-E|2|60|DO|14|1|0
+EXA705|CÁLCULO DIF. E INTEGRAL II-E|3|60|DO|11|2|0
+EXA706|EQUAÇÕES DIFERENCIAIS I-E|4|60|DO|8|3|0
+EXA703|ÁLGEBRA LINEAR I-E|5|60|DO|4|4|0
+TEC217|MÉTODOS COMPUTACIONAIS|6|60|MO|4|5|0
+TEC412|SINAIS E SISTEMAS|7|60|MO|3|6|0
+TEC430|PROCESSAMENTO DIGITAL DE SINAIS|8|30|MO|0|7|0
+EXA702|ÁLGEBRA VETORIAL E GEOM. ANALÍTICA|3|60|DO|5|2|1
+FIS110|FÍSICA I|4|90|DO|0|3|1
+FIS310|FÍSICA III|5|90|DO|6|4|1
+TEC218|CIRCUITOS ELÉTRICOS|6|60|MO|5|5|1
+TEC219|ELETRÔNICA GERAL|7|30|MO|3|6|1
+TEC513|MI PROCESSAM. DIGITAL DE SINAIS|8|60|MI|0|7|1
+EXA709|PROBABILIDADE E ESTATÍSTICA I-E|5|60|DO|0|4|2
+TEC506|MI PROJ. DE CIRCUITOS ELETRÔNICOS|7|30|MI|0|6|2
+TEC501|ELETRÔNICA PARA PDS|8|30|MO|0|7|2
+TEC497|INTRODUÇÃO À ELETRÔNICA|1|30|MO|9|0|3
+TEC401|CIRCUITOS DIGITAIS|2|30|MO|5|1|3
+TEC402|ARQUITETURA DE COMPUTADORES|4|60|MO|0|3|3
+TEC503|PRODUÇÃO DE TEXTOS TÉC. E ACADÊMICOS|1|30|MO|12|0|4
+TEC498|MI PROJETO DE CIRCUITOS DIGITAIS|2|60|MI|2|1|4
+TEC499|MI SISTEMAS DIGITAIS|4|60|MI|0|3|4
+EXA801|ALGORITMOS E PROGRAMAÇÃO I|1|60|MO|11|0|6
+EXA806|ESTRUTURA DE DADOS|2|60|MO|10|1|6
+EXA863|MI PROGRAMAÇÃO|3|30|MI|7|2|6
+TEC408|SISTEMAS OPERACIONAIS|4|60|MO|2|3|6
+TEC409|REDES DE COMPUTADORES|5|60|MO|0|4|6
+EXA544|LINGUAGENS FORMAIS E COMPILADORES|9|60|MO|0|8|6
+EXA854|MI ALGORITMOS|1|30|MI|11|0|7
+EXA805|ALGORITMOS E PROGRAMAÇÃO II|3|60|MO|7|2|7
+TEC502|MI CONCORRÊNCIA E CONECTIVIDADE|5|60|MI|0|4|7
+EXA809|ENGENHARIA DE SOFTWARE|6|60|MO|0|5|7
+EXA807|ESTRUTURAS DISCRETAS|3|60|MO|1|2|8
+EXA810|BANCO DE DADOS|6|30|MO|0|5|8
+EXA613|MI ENGENHARIA DE SOFTWARE|6|60 (30h EXT)|MI|0|5|9
+EXA813|ANÁLISE E PROJETO DE ALGORITMOS|9|60|MO|0|8|8
+EXA614|TÓPICOS DE FORMAÇÃO HUMANÍSTICA|1|60 (15h EXT)|MO|0|716|30
+EXA861|INTRODUÇÃO À ENG. DE COMPUTAÇÃO|1|30|MO|0|890|30
+TEC221|TÓPICOS DE FORMAÇÃO COMPLEMENTAR|2|60 (15h EXT)|MO|0|1064|30
+EXA417|QUÍMICA GERAL E DE MATERIAIS|3|45|DO|0|1238|30
+EXA615|ÉTICA EM COMPUTAÇÃO|8|60 (15h EXT)|MO|0|1412|30
+EXA616|EMPREENDEDORISMO I|6|60 (15h EXT)|PE|0|1756|237
+EXA612|ESTÁGIO|10|255|ES|0|1756|537
+TEC517|METODOLOGIA DA PESQUISA EM ENG. COMP.|8|30|MO|2|1590|237
+TEC518|TRABALHO DE CONCLUSÃO DE CURSO I|9|60|TC|1|1590|337
+TEC222|TRABALHO DE CONCLUSÃO DE CURSO II|10|60|TC|0|1590|437
+UCE|UNIDADE CURRICULAR DE EXTENSÃO|7|90 (90h EXT)|UCE|0|1590|537
+EXA622|EXTENSÃO EM COMPUTAÇÃO I|9|90 (90h EXT)|EXT|0|1756|337
+TEC224|EXTENSÃO EM COMPUTAÇÃO II|10|90 (90h EXT)|EXT|0|1756|437`.split('\n').map(l=>{const f=l.split('|'),a=+f[6],b=+f[7];return{k:f[0],n:f[1],s:+f[2],h:f[3],t:f[4],c:+f[5],x:a<100?X0+a*PX:a,y:a<100?Y0+b*PY:b,hr:parseInt(f[3])}});
+const P=Object.fromEntries(D.map(d=>[d.k,d]));
+const E=`EXA543>EXA704
+EXA704>EXA705,EXA709,FIS110
+EXA702>FIS310
+EXA705>EXA706,FIS310,EXA813
+EXA706>TEC217,TEC218,TEC219,TEC506
+FIS310>TEC218,TEC219,TEC506
+EXA703>TEC217
+TEC217>TEC412
+TEC497>TEC401,TEC498,TEC218,TEC219,TEC506
+TEC503>TEC498,EXA863
+TEC218>TEC219,TEC506
+TEC412>TEC430,TEC513
+TEC401>TEC430,TEC513,TEC402,TEC499
+TEC498>TEC402,TEC499
+TEC219>TEC501
+EXA801>EXA806
+EXA854>EXA806
+EXA806>EXA863,EXA805,EXA807
+EXA863>TEC408,EXA809,EXA810,EXA613,EXA544
+EXA805>TEC408,EXA809,EXA810,EXA613,EXA544
+EXA807>EXA813
+TEC408>TEC409,TEC502
+TEC517>TEC518
+TEC518>TEC222`;
+const G=[['TEC401','TEC498'],['TEC402','TEC499'],['EXA801','EXA854'],['EXA863','EXA805','EXA807'],['TEC409','TEC502'],['EXA809','EXA810','EXA613'],['TEC219','TEC506'],['TEC430','TEC513','TEC501']];
+const pairs=[];E.split('\n').forEach(l=>{const[s,t]=l.split('>');t.split(',').forEach(x=>pairs.push([s,x]))});
+const $=id=>document.getElementById(id);
+function el(t,a,p){const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);p.appendChild(n);return n}
+function tx(p,x,y,s,c,a){const n=el('text',Object.assign({x,y,class:c},a||{}),p);n.textContent=s;return n}
+function wrap(s,n){const w=s.split(' ');const l=['',''];let i=0;for(const x of w){if(i==0&&(l[0]+' '+x).trim().length>n)i=1;if(i==1&&(l[1]+' '+x).trim().length>n){l[1]+='…';break}l[i]=(l[i]+' '+x).trim()}return l}
+let done=new Set();try{done=new Set(JSON.parse(localStorage.getItem('uefs-done')||'[]'))}catch(e){}
+function save(){try{localStorage.setItem('uefs-done',JSON.stringify([...done]))}catch(e){}}
+const bg=$('bg'),ed=$('ed'),cl=$('cl'),cd=$('cd');
+// zonas
+tx(bg,20,16,'OPTATIVAS E COMPLEMENTARES (OP 360h · OH 45h · OC 45h · AC 180h)','zt');
+tx(bg,716,16,'OBRIGATÓRIAS LIVRES (NÃO TRANCAM OBRIGATÓRIAS)','zt');
+tx(bg,716,108,'EXA417 tranca apenas a optativa TEC511.','sub');
+tx(bg,1590,192,'COMPONENTES POR CARGA HORÁRIA','zt');
+
+[[1590,204,'Exige 70% da CH em MI,|MO e DO (~1585h)'],[1756,204,'Exige 60% da CH em MI,|MO e DO (~1360h)'],[1756,304,'Exige 20% da CH total|do curso (720h)'],[1756,404,'Exige 20% da CH total|do curso (720h)'],[1756,504,'Exige 40% da CH total|do curso (1440h)']].forEach(r=>{el('rect',{x:r[0],y:r[1],width:W,height:30,rx:6,class:'rn'},bg);r[2].split('|').forEach((s,i)=>tx(bg,r[0]+8,r[1]+12+i*11,s,'rt'))});
+// slots
+const slots=[];for(let i=0;i<6;i++)slots.push({k:'OP'+(i+1),t:'OP '+(i+1)+' · 60h',u:'sug. '+(7+(i>>1))+'º sem',h:60,c:C[6+(i>>1)],x:20+(i%3)*140,y:30+Math.floor(i/3)*52,w:132});
+slots.push({k:'OH',t:'OH · 45h',u:'Humanística · 2º sem',h:45,c:C[1],x:440,y:30,w:132},{k:'OC',t:'OC · 45h',u:'Complementar · 6º/7º sem',h:45,c:C[5],x:440,y:82,w:132});
+const sg={};slots.forEach(s=>{const g=el('g',{class:'slotg','data-id':s.k,tabindex:0,role:'button'},cd);el('rect',{x:s.x,y:s.y,width:s.w,height:42,rx:8,class:'cr'},g);el('circle',{cx:s.x+11,cy:s.y+12,r:4.5,fill:s.c},g);tx(g,s.x+21,s.y+16,s.t,'sl');s.ue=tx(g,s.x+10,s.y+32,s.u,'sub');tx(g,s.x+s.w-12,s.y+16,'✓','ck');g.addEventListener('click',()=>openPk(s.k));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPk(s.k)}});sg[s.k]=s});
+el('rect',{x:20,y:134,width:552,height:40,rx:8,class:'cr',style:'stroke-dasharray:4 3'},bg);tx(bg,30,151,'AC · ATIVIDADES COMPLEMENTARES · 0h / 180h','sl');el('rect',{x:30,y:159,width:532,height:6,rx:3,fill:'var(--band)'},bg);
+// arestas
+const idx={};pairs.forEach(([s,t],i)=>{const a=P[s],b=P[t];let d;if(a.x===b.x)d=`M${a.x+W/2},${a.y+H} V${b.y-2}`;else{const xm=b.x-7-(i%6)*3;d=`M${a.x+W},${a.y+H/2} H${xm} V${b.y+H/2} H${b.x-1}`}el('path',{d,class:'edge','data-f':s,'data-t':t},ed)});
+// clusters
+G.forEach(g=>{const m=g.map(k=>P[k]),y=Math.min(...m.map(q=>q.y))-4,h=Math.max(...m.map(q=>q.y))+H+4-y;const r=el('rect',{x:m[0].x-4,y,width:W+8,height:h,rx:10,class:'cl','data-g':g.join(',')},cl);const t=tx(cl,m[0].x+6,y+h+9,'CO-REQUISITO','clt');t.setAttribute('data-g',g.join(','))});
+// cards
+D.forEach(d=>{const g=el('g',{class:'card'+(d.c?'':' zero'),'data-id':d.k,tabindex:0,role:'button','aria-label':d.k+' '+d.n},cd);el('rect',{x:d.x-3,y:d.y-3,width:W+6,height:H+6,rx:12,class:'avr'},g);el('rect',{x:d.x,y:d.y,width:W,height:H,rx:9,class:'cr'},g);el('circle',{cx:d.x+12,cy:d.y+12,r:5,fill:C[d.s-1],stroke:d.s==10?'#F5D77A':'none','stroke-width':1.5},g);tx(g,d.x+W/2,d.y+14,d.h.replace(' (',' · (').replace(/^(\d+)(?!h)/,'$1h')+' • '+d.t,'meta');el('circle',{cx:d.x+W-15,cy:d.y+14,r:10,class:'bd'},g);tx(g,d.x+W-15,d.y+17.4,d.c,'ct');tx(g,d.x+10,d.y+33,d.k,'code');wrap(d.n,24).forEach((s,i)=>s&&tx(g,d.x+10,d.y+43+i*9.5,s,'nm'));tx(g,d.x+W-13,d.y+H-7,'✓','ck');
+g.addEventListener('mouseenter',()=>hl(d.k));g.addEventListener('focus',()=>hl(d.k));g.addEventListener('mouseleave',rh);g.addEventListener('blur',rh);g.addEventListener('click',()=>tog(d.k));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog(d.k)}})});
+// destaque
+function hl(id){const an=new Set(),ds=new Set([id]);let ch=true;while(ch){ch=false;pairs.forEach(([a,b])=>{if((b===id||an.has(b))&&!an.has(a)){an.add(a);ch=true}})}ch=true;while(ch){ch=false;pairs.forEach(([a,b])=>{if(ds.has(a)&&!ds.has(b)){ds.add(b);ch=true}})}
+const on=new Set([...an,...ds]);G.forEach(g=>{if(g.includes(id))g.forEach(x=>on.add(x))});
+document.querySelectorAll('.card').forEach(c=>{const k=c.dataset.id;c.classList.toggle('dim',!on.has(k));c.classList.toggle('hot',k===id);c.classList.toggle('rel',on.has(k)&&k!==id)});
+document.querySelectorAll('.edge').forEach(e=>{const a=e.dataset.f,b=e.dataset.t,o=(ds.has(a)&&ds.has(b))||(an.has(a)&&an.has(b))||a===id||b===id;e.classList.toggle('dim',!o);e.classList.toggle('hot',o)});
+document.querySelectorAll('[data-g]').forEach(c=>c.classList.toggle('dim',!c.dataset.g.split(',').some(x=>on.has(x))))}
+let selSem=0;
+function applySem(){const n=selSem;document.querySelectorAll('.card').forEach(c=>{const m=P[c.dataset.id].s===n;c.classList.toggle('dim',!m);c.classList.toggle('rel',m)});document.querySelectorAll('.edge').forEach(e=>e.classList.add('dim'));document.querySelectorAll('[data-g]').forEach(c=>c.classList.toggle('dim',!c.dataset.g.split(',').some(k=>P[k].s===n)))}
+function rh(){document.querySelectorAll('.dim,.hot,.rel').forEach(e=>e.classList.remove('dim','hot','rel'));if(selSem)applySem()}
+// concluídas
+function paint(){let h=0;document.querySelectorAll('[data-id]').forEach(n=>{const k=n.dataset.id,on=done.has(k);n.classList.toggle('done',on);n.setAttribute('aria-pressed',on);if(on)h+=(P[k]||sg[k]).hr||(sg[k]||{}).h||0});$('prog').textContent='Concluído: '+h+'h de 3600h ('+Math.round(h/36)+'%)';$('pbf').style.width=Math.min(100,h/36)+'%';paintAv()}
+function tog(k){done.has(k)?done.delete(k):done.add(k);save();paint()}
+let arm=0;$('rs').onclick=()=>{if(!done.size)return;if(!arm){$('rs').textContent='Confirmar?';arm=setTimeout(()=>{arm=0;$('rs').textContent='Limpar'},3000);return}clearTimeout(arm);arm=0;$('rs').textContent='Limpar';done.clear();assign={};saveX();slots.forEach(s=>slotTxt(s.k));save();paint()};
+// legenda, tema, semestres, resumo
+$('sems').innerHTML=C.map((c,i)=>'<button class="sd" data-s="'+(i+1)+'" aria-pressed="false" aria-label="Destacar o '+(i+1)+'º semestre"><i style="background:'+c+(i==9?';box-shadow:0 0 0 1.5px #F5D77A':'')+'"></i>'+(i+1)+'º</button>').join('');
+$('sems').onclick=e=>{const b=e.target.closest('.sd');if(!b)return;const n=+b.dataset.s;selSem=selSem===n?0:n;document.querySelectorAll('.sd').forEach(x=>{const on=+x.dataset.s===selSem;x.setAttribute('aria-pressed',on);x.classList.toggle('on',on)});rh()};
+$('hg').innerHTML=[['MI · Módulos Integradores','390h'],['MO · Módulos Obrigatórios','1230h'],['DO · Disciplinas Obrigatórias','645h'],['OP · Optativas Profissionalizantes (6)','360h'],['OH · Optativa de Formação Humanística','45h'],['OC · Optativa de Formação Complementar','45h'],['PE · Projeto Empreendedor','60h'],['TC · Trabalho de Conclusão de Curso (I + II)','120h'],['EXT + UCE · Extensão e Unidade Curricular de Extensão','270h'],['ES · Estágio Curricular','255h'],['AC · Atividades Complementares','180h']].map(a=>'<div><span>'+a[0]+'</span><b>'+a[1]+'</b></div>').join('');
+function lgSet(o){$('lg').hidden=!o;$('lb').setAttribute('aria-expanded',o)}
+$('lb').onclick=()=>lgSet($('lg').hidden);
+document.addEventListener('click',e=>{if($('lg').hidden||$('lg').contains(e.target)||$('lb').contains(e.target))return;lgSet(false);e.stopPropagation()},true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){lgSet(false);closePk()}});
+const SUN='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',MOON='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';function icon(t){$('ic').innerHTML=t==='dark'?MOON:SUN}
+function theme(t){document.documentElement.setAttribute('data-theme',t);icon(t);$('th').setAttribute('aria-checked',t==='dark');try{localStorage.setItem('uefs-theme',t)}catch(e){}}
+let t0=null;try{t0=localStorage.getItem('uefs-theme')}catch(e){}
+document.documentElement.setAttribute('data-theme',t0||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));$('th').setAttribute('aria-checked',document.documentElement.dataset.theme==='dark');icon(document.documentElement.dataset.theme);
+$('th').onclick=()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+const CAT={OP:[{c:'EXA611',n:'MI Processadores de Linguagem de Programação'},{c:'TEC511',n:'Nome a confirmar na resolução'},{c:'EXA860',n:'Nome a confirmar na resolução'}],OH:[],OC:[]};
+const CN={OP:'Optativas Profissionalizantes',OH:'Optativa de Formação Humanística',OC:'Optativa de Formação Complementar'};
+let custom={},assign={},pk=null;
+try{custom=JSON.parse(localStorage.getItem('uefs-custom')||'{}');assign=JSON.parse(localStorage.getItem('uefs-assign')||'{}')}catch(e){}
+Object.keys(assign).forEach(k=>done.add(k));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function saveX(){try{localStorage.setItem('uefs-custom',JSON.stringify(custom));localStorage.setItem('uefs-assign',JSON.stringify(assign))}catch(e){}}
+function items(){const c=pk.slice(0,2);return(CAT[c]||[]).concat(custom[c]||[])}
+function slotTxt(k){const s=sg[k],a=assign[k];let t=a?a.c+' · '+a.n:s.u;if(t.length>24)t=t.slice(0,23)+'…';s.ue.textContent=t}
+function renderPk(){const q=$('pq').value.trim().toLowerCase(),cur=assign[pk],used=new Set(Object.keys(assign).filter(k=>k!==pk).map(k=>assign[k].c));const l=items().filter(x=>!q||(x.c+' '+x.n).toLowerCase().includes(q));$('pl').innerHTML=l.length?l.map(x=>'<button class="pi'+(cur&&cur.c===x.c?' sel':'')+'" data-c="'+esc(x.c)+'"'+(used.has(x.c)?' disabled':'')+'><b>'+esc(x.c)+'</b><span>'+esc(x.n)+'</span>'+(used.has(x.c)?'<em>já usada</em>':'')+'</button>').join(''):'<p class="pe">Nenhuma disciplina encontrada.</p>'}
+function openPk(k){pk=k;$('pt').textContent=CN[k.slice(0,2)]+' · '+sg[k].t.split(' · ')[0];$('pq').value='';renderPk();$('pk').hidden=false;$('pq').focus()}
+function closePk(){$('pk').hidden=true;pk=null}
+$('pq').oninput=renderPk;$('px').onclick=closePk;
+$('pl').onclick=e=>{const b=e.target.closest('.pi');if(!b||b.disabled)return;const x=items().find(i=>i.c===b.dataset.c);if(!x)return;assign[pk]={c:x.c,n:x.n};done.add(pk);saveX();save();slotTxt(pk);paint();closePk()};
+$('pc').onclick=()=>{if(!pk)return;delete assign[pk];done.delete(pk);saveX();save();slotTxt(pk);paint();closePk()};
+$('ad').onclick=()=>{const c=$('ac').value.trim().toUpperCase();if(!c||!pk)return;const k=pk.slice(0,2);custom[k]=custom[k]||[];if(!items().some(x=>x.c===c))custom[k].push({c,n:$('an').value.trim()||'Sem nome'});saveX();$('ac').value='';$('an').value='';renderPk()};
+document.addEventListener('click',e=>{if($('pk').hidden||$('pk').contains(e.target)||e.target.closest('.slotg'))return;closePk();e.stopPropagation()},true);
+const pre={};pairs.forEach(([s,t])=>(pre[t]=pre[t]||[]).push(s));
+const grp={};G.forEach(g=>g.forEach(k=>grp[k]=g));
+const RQ={EXA616:['m',1360],TEC517:['m',1585],EXA612:['t',1440],EXA622:['t',720],TEC224:['t',720]};
+let avOn=true;try{avOn=localStorage.getItem('uefs-av2')!=='0'}catch(e){}
+$('av').setAttribute('aria-pressed',avOn);
+function avail(){const H={t:0,m:0};done.forEach(k=>{const d=P[k],h=d?d.hr:(sg[k]?sg[k].h:0);H.t+=h;if(d&&/^(MI|MO|DO)$/.test(d.t))H.m+=h});const ok=k=>!done.has(k)&&(pre[k]||[]).every(p=>done.has(p))&&(!RQ[k]||H[RQ[k][0]]>=RQ[k][1]);const S=new Set();D.forEach(d=>{let o=ok(d.k);if(o&&grp[d.k])o=grp[d.k].every(m=>done.has(m)||ok(m));if(o)S.add(d.k)});return S}
+function paintAv(){const S=avOn?avail():new Set();document.querySelectorAll('.card').forEach(c=>c.classList.toggle('av',S.has(c.dataset.id)))}
+$('av').onclick=()=>{avOn=!avOn;$('av').setAttribute('aria-pressed',avOn);try{localStorage.setItem('uefs-av2',avOn?'1':'0')}catch(e){}paintAv()};
+slots.forEach(s=>slotTxt(s.k));
+paint();
+</script>
+</body>
+</html>
